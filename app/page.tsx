@@ -1,22 +1,15 @@
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import Hero from "@/components/hero";
+import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
+import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
+import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 
-export default function Home() {
+export default async function Home() {
   return (
-    <div>
-      <SidebarTrigger className="ml-5" />
-
-      <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-        <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          <div className="aspect-video rounded-xl bg-muted/50">50</div>
-          <div className="aspect-video rounded-xl bg-muted/50">10</div>
-          <div className="aspect-video rounded-xl bg-muted/50">0</div>
-        </div>
-
-        <div className="grid auto-rows-min gap-4 md:grid-cols-2">
-          <div className="aspect-video rounded-xl bg-muted/50">50</div>
-          <div className="aspect-video rounded-xl bg-muted/50">10</div>
-        </div>
-      </div>
-    </div>
+    <>
+      <main className=" flex flex-col  justify-center items-center gap-6 px-4">
+        {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
+        Hello, World!!
+      </main>
+    </>
   );
 }
